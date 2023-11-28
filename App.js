@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import AppNavigator from './AppNavigator';
+import { NativeBaseProvider } from 'native-base';
+import { extendTheme } from 'native-base';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const theme = extendTheme({
+  colors: {
+    primary: {
+      500: '#D0D4FC',
+      600: '#4255FF',
+    },
+    muted: {
+      800: '#4255FF',
+    },
+    secondary: {
+      200: '#DAF9FD'
+    }
   },
 });
+export default function App() {
+  return (
+    <NativeBaseProvider theme={theme}>
+      <AppNavigator />
+    </NativeBaseProvider>
+  )
+
+
+}
